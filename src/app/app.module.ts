@@ -5,17 +5,24 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { GardenComponent } from './garden/garden.component';
 import { HistoryComponent } from './history/history.component';
 import { SettingsComponent } from './settings/settings.component';
 
 @NgModule({
-  declarations: [AppComponent, GardenComponent, HistoryComponent, SettingsComponent],
+  declarations: [
+    AppComponent,
+    GardenComponent,
+    HistoryComponent,
+    SettingsComponent,
+  ],
   imports: [
     BrowserModule,
     HttpClientModule,
     BrowserAnimationsModule,
     MatTabsModule,
+    MatSlideToggleModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

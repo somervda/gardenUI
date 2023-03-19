@@ -1,1 +1,18 @@
-<p>garden works!</p>
+<div class="garden-view">
+  <div class="pump-overlay">
+    <mat-slide-toggle
+      [checked]="pump == 'on'"
+      (change)="onPumpToggle($event)"
+    ></mat-slide-toggle>
+  </div>
+  <div class="camera-overlay">
+    <mat-slide-toggle (change)="onCameraToggle($event)"></mat-slide-toggle>
+  </div>
+  <div class="env-overlay">
+    Temp: 69F<br />Humidity: 70%<br />Battery: 12.8V<br />Water Level: Med.
+  </div>
+  <div class="m1-overlay">70%</div>
+  <div class="m2-overlay">60%</div>
+  <div class="m3-overlay">60%</div>
+  <div class="m4-overlay">50%</div>
+</div>

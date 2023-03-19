@@ -1,0 +1,43 @@
+.pump-overlay {
+    position: absolute;
+    top: 90px;
+    left: 620px;
+  }
+
+.camera-overlay {
+    position: absolute;
+    top: 225px;
+    left: 620px;
+  }
+.env-overlay {
+    position: absolute;
+    top: 109px;
+    left: 220px;
+  }
+.m1-overlay {
+    position: absolute;
+    top: 70px;
+    left: 113px;
+  }
+.m2-overlay {
+    position: absolute;
+    top: 70px;
+    left: 408px;
+  }
+.m3-overlay {
+    position: absolute;
+    top: 183px;
+    left: 113px;
+  }
+.m4-overlay {
+    position: absolute;
+    top: 183px;
+    left: 408px;
+  }
+
+.garden-view {
+    background-image: url("../../assets/gardenView.jpg");
+    height:254px; background-size:cover; width: 704px; top: 5px;
+    background-repeat: no-repeat;
+    margin-top: 10px;
+}
