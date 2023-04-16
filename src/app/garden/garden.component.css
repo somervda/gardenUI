@@ -24,16 +24,7 @@
     top: 70px;
     left: 408px;
   }
-.m3-overlay {
-    position: absolute;
-    top: 183px;
-    left: 113px;
-  }
-.m4-overlay {
-    position: absolute;
-    top: 183px;
-    left: 408px;
-  }
+
 
 .garden-view {
     background-image: url("../../assets/gardenView.jpg");

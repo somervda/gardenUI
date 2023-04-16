@@ -28,7 +28,31 @@ export class RelayService {
 
   pumpState() {
     let value = this.http.get('http://' + environment.gardenHost + '/pump');
-    console.log('Pump:', value);
+    console.log('pump:', value);
+    return value;
+  }
+
+  camOn() {
+    console.log('cam/on');
+    let value = this.http.get<string>(
+      'http://' + environment.gardenHost + '/cam/on'
+    );
+    console.log(value);
+    return value;
+  }
+
+  camOff() {
+    console.log('cam/off');
+    let value = this.http.get<string>(
+      'http://' + environment.gardenHost + '/cam/off'
+    );
+    console.log(value);
+    return value;
+  }
+
+  camState() {
+    let value = this.http.get('http://' + environment.gardenHost + '/cam');
+    console.log('cam:', value);
     return value;
   }
 }

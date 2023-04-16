@@ -9,11 +9,9 @@ export class SensorService {
   constructor(private http: HttpClient) {}
 
   getSensors() {
-    console.log('/sensors');
     let value = this.http.get<string>(
       'http://' + environment.gardenHost + '/sensors'
     );
-    console.log(value);
     return value;
   }
 }

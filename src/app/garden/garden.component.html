@@ -1,18 +1,26 @@
 <div class="garden-view">
   <div class="pump-overlay">
     <mat-slide-toggle
-      [checked]="pump == 'on'"
+      [checked]="sensors.pump == 'on'"
       (change)="onPumpToggle($event)"
     ></mat-slide-toggle>
   </div>
   <div class="camera-overlay">
-    <mat-slide-toggle (change)="onCameraToggle($event)"></mat-slide-toggle>
+    <mat-slide-toggle
+      [checked]="sensors.cam == 'on'"
+      (change)="onCameraToggle($event)"
+    ></mat-slide-toggle>
   </div>
   <div class="env-overlay">
-    Temp: 69F<br />Humidity: 70%<br />Battery: 12.8V<br />Water Level: Med.
+    Temp: {{ sensors.temperature }}C<br />Humidity:
+    {{ sensors.humidity }}%<br />Battery: {{ sensors.battery }}V<br />Water
+    Level: {{ sensors.waterLevel }}<br />Free:
+    {{
+      sensors.file_bytes_free
+        ? (sensors.file_bytes_free / 1000 | number : "1.0-0")
+        : 0
+    }}KB
   </div>
-  <div class="m1-overlay">70%</div>
-  <div class="m2-overlay">60%</div>
-  <div class="m3-overlay">60%</div>
-  <div class="m4-overlay">50%</div>
+  <div class="m1-overlay">{{ sensors.sm1 ? sensors.sm1 * 10 : 0 }}%</div>
+  <div class="m2-overlay">{{ sensors.sm2 ? sensors.sm2 * 10 : 0 }}%</div>
 </div>
