@@ -28,7 +28,7 @@ export class RelayService {
 
   pumpState() {
     let value = this.http.get('http://' + environment.gardenHost + '/pump');
-    console.log(value);
+    console.log('Pump:', value);
     return value;
   }
 }

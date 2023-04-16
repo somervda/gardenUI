@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { RelayService } from '../services/relay.service';
+import { SensorService } from '../services/sensor.service';
+import { interval } from 'rxjs/internal/observable/interval';
+import { Subscription } from 'rxjs';
+import { startWith, switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-garden',
@@ -8,16 +12,25 @@ import { RelayService } from '../services/relay.service';
   styleUrls: ['./garden.component.css'],
 })
 export class GardenComponent implements OnInit {
-  // relay settings
   pump = 'off';
-  constructor(private relayService: RelayService) {}
+  sensors = '';
+  timeIterval: Subscription | undefined;
+
+  constructor(
+    private relayService: RelayService,
+    private sensorService: SensorService
+  ) {}
 
   ngOnInit(): void {
-    // Set the initial value of the pump
-    this.relayService.pumpState().subscribe((response) => {
-      this.pump = JSON.parse(JSON.stringify(response)).pump;
-      console.log('init:', this.pump);
-    });
+    // Set up polling for sensors
+    this.timeIterval = interval(5000)
+      .pipe(
+        startWith(0),
+        switchMap(() => this.sensorService.getSensors())
+      )
+      .subscribe((response) => {
+        this.sensors = JSON.parse(JSON.stringify(response)).sensors;
+      });
   }
 
   public onPumpToggle(event: MatSlideToggleChange) {
@@ -32,6 +45,7 @@ export class GardenComponent implements OnInit {
       });
     }
   }
+
   public onCameraToggle(event: MatSlideToggleChange) {
     console.log('Camera', event.checked);
   }
