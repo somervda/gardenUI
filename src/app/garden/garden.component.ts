@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { RelayService } from '../services/relay.service';
 import { SensorService } from '../services/sensor.service';
 import { interval } from 'rxjs/internal/observable/interval';
-import { startWith, switchMap } from 'rxjs';
+import { startWith, Subscription, switchMap } from 'rxjs';
 import { Sensors } from '../models';
 
 @Component({
@@ -11,8 +11,9 @@ import { Sensors } from '../models';
   templateUrl: './garden.component.html',
   styleUrls: ['./garden.component.css'],
 })
-export class GardenComponent implements OnInit {
+export class GardenComponent implements OnInit, OnDestroy {
   sensors: Sensors = {};
+  sensor$$: undefined | Subscription;
 
   constructor(
     private relayService: RelayService,
@@ -21,7 +22,7 @@ export class GardenComponent implements OnInit {
 
   ngOnInit(): void {
     // Set up polling for sensors, check each 15 seconds
-    interval(15000)
+    this.sensor$$ = interval(15000)
       .pipe(
         startWith(0),
         switchMap(() => this.sensorService.getSensors())
@@ -55,6 +56,12 @@ export class GardenComponent implements OnInit {
       this.relayService.camOff().subscribe((response) => {
         this.sensors.cam = JSON.parse(JSON.stringify(response)).cam;
       });
+    }
+  }
+
+  ngOnDestroy(): void {
+    if (this.sensor$$) {
+      this.sensor$$.unsubscribe();
     }
   }
 }

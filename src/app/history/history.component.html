@@ -1,1 +1,63 @@
-<p>history works!</p>
+<mat-card style="border: grey; margin: 5px; max-width: 800px">
+  <mat-card-title>{{ chartTitle }}</mat-card-title>
+  <mat-card-content>
+    <google-chart
+      *ngIf="showChart"
+      #chart
+      [type]="chartType"
+      [data]="chartData"
+      [columns]="chartColumns"
+      [options]="chartOptions"
+      [dynamicResize]="chartResize"
+      class="googleChart"
+    >
+    </google-chart>
+    <div
+      *ngIf="showChart == false"
+      style="
+        text-align: center;
+        margin: 25px;
+        height: 280px;
+        vertical-align: middle;
+      "
+    >
+      Waiting For Chart Data...
+    </div>
+
+    <div style="text-align: center; margin-top: 10px">
+      <mat-radio-group
+        (change)="historyChange($event)"
+        aria-labelledby="rglHistory"
+      >
+        <mat-radio-button value="1" checked
+          >24 Hours&nbsp;&nbsp;</mat-radio-button
+        >
+        <mat-radio-button value="4">4 Days&nbsp;&nbsp;</mat-radio-button>
+        <mat-radio-button value="7">7 Days&nbsp;&nbsp;</mat-radio-button>
+        <mat-radio-button value="14">14 Days&nbsp;&nbsp;</mat-radio-button>
+        <mat-radio-button value="30">30 Days&nbsp;&nbsp;</mat-radio-button>
+        <mat-radio-button value="90">90 Days&nbsp;&nbsp;</mat-radio-button>
+        <mat-radio-button value="365">1 Year&nbsp;&nbsp;</mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <div style="text-align: center; margin-top: 10px">
+      <mat-form-field appearance="fill" [style.width.px]="400">
+        <mat-label>Select Chart Type</mat-label>
+        <mat-select
+          (selectionChange)="chartSeriesChange($event)"
+          [value]="chartSelection"
+        >
+          <mat-option value="1"
+            >Environment (Humidity and Temperature)</mat-option
+          >
+          <mat-option value="2"
+            >Irrigation (Soil Moisture and Pump Times)</mat-option
+          >
+          <mat-option value="3"
+            >Power Usage (Battery Voltage and Pump/Camera Times)</mat-option
+          >
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </mat-card-content></mat-card
+>

@@ -1,34 +1,36 @@
 .pump-overlay {
     position: absolute;
-    top: 90px;
+    top: 105px;
     left: 620px;
   }
 
 .camera-overlay {
     position: absolute;
-    top: 225px;
+    top: 270px;
     left: 620px;
   }
 .env-overlay {
     position: absolute;
-    top: 109px;
-    left: 220px;
+    top: 115px;
+    left: 225px;
   }
 .m1-overlay {
     position: absolute;
-    top: 70px;
-    left: 113px;
+    top: 155px;
+    left: 95px;
+    font-size:x-large;
   }
 .m2-overlay {
     position: absolute;
-    top: 70px;
-    left: 408px;
+    top: 155px;
+    left: 425px;
+    font-size:x-large;
   }
 
 
 .garden-view {
-    background-image: url("../../assets/gardenView.jpg");
-    height:254px; background-size:cover; width: 704px; top: 5px;
+    background-image: url("../../assets/2023-04-20_130404.jpg");
+    height:296px; background-size:cover; width: 704px; top: 5px;
     background-repeat: no-repeat;
     margin-top: 10px;
 }

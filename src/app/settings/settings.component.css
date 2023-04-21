@@ -1,0 +1,13 @@
+.prompt {
+    font-weight: 500;
+  }
+
+
+  @media (min-width: 400px) {
+    .gridwrapper2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 10px;
+
+    }
+  }
