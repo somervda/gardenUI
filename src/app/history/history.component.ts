@@ -135,30 +135,24 @@ export class HistoryComponent implements OnInit {
     //
     switch (parseInt(this.chartSelection)) {
       case 1: {
-        //statements;
         this.chartColumns = ['Hour', 'Temperature F', 'Humidity %'];
         this.chartOptions = this.chartOptions1;
         this.chartTitle = 'Environment History';
         break;
       }
       case 2: {
-        //statements;
         this.chartColumns = ['Hour', 'Soil 1', 'Soil 2', 'Pump'];
         this.chartOptions = this.chartOptions2;
         this.chartTitle = 'Irrigation History';
-
         break;
       }
       case 3: {
-        //statements;
         this.chartColumns = ['Hour', 'Volts', 'Camera', 'Pump'];
         this.chartOptions = this.chartOptions3;
         this.chartTitle = 'Power Usage History';
-
         break;
       }
       default: {
-        //statements;
         break;
       }
     }
