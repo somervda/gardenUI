@@ -86,12 +86,12 @@ export class HistoryComponent implements OnInit {
     chartArea: { width: '80%', height: '70%' },
     hAxis: { title: 'Time' },
     // Note: for multiple axis vAxis is called vAxes !!!
-    vAxis: { viewWindow: { min: 0 } },
+
     vAxes: {
       0: {
         title: 'Volts',
-        minValue: 0,
-        maxValue: 16,
+        minValue: 10,
+        maxValue: 15,
         gridlines: { count: 0 },
       },
       1: {

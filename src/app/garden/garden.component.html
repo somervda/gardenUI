@@ -15,9 +15,13 @@
       ></mat-slide-toggle>
     </div>
     <div class="env-overlay">
-      Temp: {{ sensors.temperature }}C<br />Humidity:
-      {{ sensors.humidity }}%<br />Battery: {{ sensors.battery }}V<br />Water
-      Level: {{ sensors.waterLevel }}<br />Free:
+      Temp:
+      {{
+        ((sensors.temperature ? sensors.temperature : 0) * 9) / 5 + 32
+          | number : "1.0-0"
+      }}F<br />Humidity: {{ sensors.humidity }}%<br />Battery:
+      {{ sensors.battery }}V<br />Water Level: {{ sensors.waterLevel
+      }}<br />Free:
       {{
         sensors.file_bytes_free
           ? (sensors.file_bytes_free / 1000 | number : "1.0-0")
