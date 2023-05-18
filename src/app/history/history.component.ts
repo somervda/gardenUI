@@ -66,7 +66,7 @@ export class HistoryComponent implements OnInit {
         gridlines: { count: 0 },
       },
       1: {
-        title: 'Minutes',
+        title: 'Minutes/Level',
         minValue: 0,
         gridlines: { count: 0 },
       },
@@ -76,6 +76,7 @@ export class HistoryComponent implements OnInit {
       0: { targetAxisIndex: 0 },
       1: { targetAxisIndex: 0 },
       2: { targetAxisIndex: 1 },
+      3: { targetAxisIndex: 1 },
     },
     // curveType: 'function',
     formatters: {},
@@ -141,7 +142,7 @@ export class HistoryComponent implements OnInit {
         break;
       }
       case 2: {
-        this.chartColumns = ['Hour', 'Soil 1', 'Soil 2', 'Pump'];
+        this.chartColumns = ['Hour', 'Soil 1', 'Soil 2', 'Pump', 'Water level'];
         this.chartOptions = this.chartOptions2;
         this.chartTitle = 'Irrigation History';
         break;
@@ -176,6 +177,7 @@ export class HistoryComponent implements OnInit {
               element['sm1'] * 10,
               element['sm2'] * 10,
               element['pump'] / 60,
+              element['waterLevel'],
             ]);
             break;
           }
